@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+form {
+  width: 1200px;
+  margin: 100 auto;
+  background: grey;
+  border: 5px solid #545452;
+}
+
+div {
+  margin-bottom: 10px;
+
+}
+
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #c9c9c3;
+  text-align: left;
+  background-color: #878780;
+}
+
+legend {
+  padding: 10px;
+  background: blue;
+  color: brown;
+}
+
+h1 {
+  text-align: center;
+
+
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 200;
+  color: #e8e8df;
+}
+
+table {
+
+  font-size: 1rem;
+  font-weight: 400;
+  border: 1px solid black;
+  background: brown;
+
+}
+
+th, td {
+
+  border: 1px solid white;
+
+}
+
+
+</style>
+</head>
+
+<body>
+
+  <h1>How to use the web app<h1>
+
+  <h3>Step 1: Choose simulation type<h3>
+  <p> You can either chose to simulate a system in which each population will
+    follow the model directly, or introduce a randomization parameter (either normally
+    or uniformly distributed) that can model systems such as those with immigration
+    and emmigration. </p>
+
+
+
+  <p>If you choose to select either stochastic method, an input box will appear
+    asking for the magnitude of that change. We recommend values around 1%. If
+    nothing is input, the regular model will be used instead of the stochastic one.</p>
+
+  <video controls="controls" width="500" height="300" name="stochas" src="stochas.mov"></video>
+
+  <h3>Step 2: Input the number of generations and timestep parameters<h3>
+
+  <p>For the number of generations, make sure to enter at least 2 generations so that the model runs.
+    A good number of generations will depend on your initial conditions as well as the time step. </p>
+
+
+
+  <p>For time step, you should enter a value less than 1 (but more than 0) for best results (e.g. around 0.0001). A smaller
+    number here will mean a more precise simulation. However, keep in mind that each generation
+    will update populations one time step, so if you lower timestep your model will appear to run for less time.
+    </p>
+
+    <br>
+
+    <p>Some good parameters for number of generations and time step are 8000 and 0.0001, for example.</p>
+
+    <img src="tutorialnumgens.png" alt="Generations and Time Step" width="600" height="200"></img>
+
+    <h3>Step 3: Input species information</h3>
+
+    <p>Next, we want to enter the information for each species. Two important things to note:</p>
+    <br>
+    <p> - Each species should have their own name. If
+      two species are given the same name, the model will still run, but will overwrite
+      previously named species.</p>
+
+    <p> - Predators should have a negative growth value. Prey should have positive growth.
+      This will ensure that the predator-prey system functions given the version of the
+      model implemented here. </p>
+
+    <br>
+
+    <h3>Step 4: Insert values for the interaction matrix<h3>
+
+    <p>It can be difficult to know what values will work for the matrix to produce
+      a stable model. However, a good rule of thumb is to put negative values
+      along the diagonals (self-interacting values), negative values for predators
+      actin on prey, and positive values for prey acting on predators.</p>
+
+
+
+    <p>The interaction values are given by the order of input from the species
+      parameters. That is, if the first row is "Bear" and the second is "Rabbit",
+      then the matrix will look as follows:</p>
+
+    <div>
+      <table>
+        <tr>
+          <th>Bear</th>
+          <th>Rabbit</th>
+
+
+        </tr>
+
+        <tr>
+          <td>Bear self-interaction</td>
+          <td>Effect of rabbit on bear (bears eat rabbits, so positive)</td>
+        </tr>
+
+        <tr>
+          <td>Effect of bear on rabbit (rabbits get eaten, so negative)
+          <td>Rabbit self-interaction</td>
+        <tr>
+
+      </table>
+    </div>
+
+    <p>Clicking on the "Add more species" button will create a new row in the
+      species parameters and will change the size of the matrix accordingly. It
+      is best to press this button before inputting parameters into the matrix.</p>
+
+
+    <h3>Step 5: Submitting<h3>
+
+      <p>Once all the parameters are set, the Submit button will create a PNG file
+        and display the graph. Click on the browser's back arrows to input new parameters
+        or change existing ones.</p>
+
+    <form action="/">
+      <button type="submit" value="try">
+    </form>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script>
+
+  $(document).ready(function(){
+  var i = 0;
+
+  $('#add-row').click(function(){
+    $('#init-group').first().clone(true).attr('id','med-'+i).insertAfter('form .form-group:last');
+    i++;
+  });
+});
+
+  </script>
+
+
+
+
+</head>
+
+
+
+
+<body>
+
+<h3>Chart legend: bears = blue, wolves = green, rabbits = red<h3>
+<img src="thomas.png" alt="graph.png" width="1024" height="400">
+
+</br>
+
+
+<form action="/parameters" method="get">
+  Number of generations:&nbsp;<input type="number" name="numGens"> <br> <br>
+
+  <div class="container"></div>
+
+  Time Step:&nbsp;<input type="number" name="timeStep" step="any"> <br> <br>
+  <div class="container"></div>
+
+  <div class="form-headers">
+    <label style="margin-right:95px;"> Species </label>
+    <label style="margin-right:50px;"> Growth Rate </label>
+    <label style="margin-right:135px;"> Carrying Capacity </label>
+  </div>
+
+  <div class="form-row">
+    <div id="init-group" class="form-group">
+      <input type="text" id="name" name="name" placeholder="Species">
+      <input type="text" id="growth" name="growth" placeholder="Growth Rate">
+      <input type="text" id="capacity" name="capacity" placeholder="Carrying Capacity">
+      <input type="checkbox" id="predator" name="predator" value="predator" alt="prey">
+      <label for="predator"> Predator?</label><br>
+    </div>
+    <span id="add-row">+</span>
+  </div>
+
+  <input type="submit" value="Submit">
+</form>
+
+  <button type="button" class="add_field">Add field</button>
+  <input type="button" value="Run another simulation" onclick="history.go(-1)">
+
+</body>
+</html>
